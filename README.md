@@ -5,7 +5,7 @@
 - Semester: Spring 2026
 
 Team Members
-| Name | Student No. | emai |
+| Name | Student No. | Email |
 |--------|-------------|-----|
 | Cheng Yang Lai| 301 | cyl74@sfu.ca |
 | Namandeep Kaur | 301553233 | nka87@sfu.ca |
