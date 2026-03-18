@@ -22,13 +22,21 @@ class EINS:
         self.direction = 1  # or -1
 
         self.deal_cards()
-        self.top_card = self.deck.pop()
+        while True: #Yes I know this may result in a infinite if we get unlucky with shuffle, but it would be funny 
+            #ensure the game does not start with a wild card or any of the special card. 
+                #game will only start if the card is 0-9
+            if(self.deck[0].split()[1] in  ['0','1','2','3','4','5','6','7','8','9']):
+                self.top_card = self.deck.pop()
+                break
+            else:#shuffle the deck and retry selecting the first card
+                random.shuffle(self.deck)
+            
 
     def create_deck(self):
         deck=[]
         for i in range(2):#doing it twice as in EINS there is two of each
             for metal in Suits:
-                for card_type in ['0','1','2','3','4','5','6','7','8','9'] + ["SKIP", "REVERSE", "DRAW2"]:
+                for card_type in ['0','1','2','3','4','5','6','7','8','9'] + ["SKIP", "REVERSE", "DRAW2"]:# don't ask me why I decide to concatenate this rather than combine I am tried :(
                     deck.append(metal+' '+card_type)
         for _ in range(4):
             deck.append('WILD CARD')
