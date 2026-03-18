@@ -7,7 +7,7 @@
 Team Members
 | Name | Student No. | Email |
 |--------|-------------|-----|
-| Cheng Yang Lai| 301 | cyl74@sfu.ca |
+| Cheng Yang Lai| 301550876 | cyl74@sfu.ca |
 | Namandeep Kaur | 301553233 | nka87@sfu.ca |
 
 
