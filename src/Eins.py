@@ -1,6 +1,6 @@
 import random
 
-Suits = ["Europium", "Iron", "Nickle", "Steel"]
+Suits = ["EUROPIUM", "IRON", "NICKLE", "STEEL"]
 
 
 
@@ -25,7 +25,7 @@ class EINS:
         while True: #Yes I know this may result in a infinite if we get unlucky with shuffle, but it would be funny 
             #ensure the game does not start with a wild card or any of the special card. 
                 #game will only start if the card is 0-9
-            if(self.deck[0].split()[1] in  ['0','1','2','3','4','5','6','7','8','9']):
+            if(self.deck[-1].split()[1] in  ['0','1','2','3','4','5','6','7','8','9']):
                 self.top_card = self.deck.pop()
                 break
             else:#shuffle the deck and retry selecting the first card
@@ -52,17 +52,19 @@ class EINS:
         self.deck = self.discard_pile
         self.discard_pile = []
         times_to_shuffle= 8
-        for wasting_time in times_to_shuffle:
+        for wasting_time in range(times_to_shuffle):
             random.shuffle(self.deck)
 
     def is_valid_play(self, card):
         top_color, top_value = self.top_card.split()
         color, value = card.split()
-        return 'WILD' == top_color or color == top_color or value == top_value
+        return 'WILD' == color or color == top_color or value == top_value
 
     def draw_card(self, player_id):
         if len(self.deck) == 0:
-            return None
+            if len(self.discard_pile) == 0:
+                return None  # No card anymore
+            self.reshuffle_discard()
         card = self.deck.pop()
         self.hands[player_id].append(card)
         return card
@@ -76,6 +78,15 @@ class EINS:
             return False, "Invalid move"
 
         self.hands[player_id].remove(card)
+        # Add to discard pille
+                # -2 = Draw, -1=Card
+        topCardSuit=self.top_card.split()[1]
+        if(topCardSuit==-1):
+            self.discard_pile.append("WILD CARD")
+        elif topCardSuit==-2:
+            self.discard_pile.append("WILD DRAW4")
+        else:
+            self.discard_pile.append(self.top_card)
         self.top_card = card
 
         # Handle special cards
@@ -93,10 +104,11 @@ class EINS:
             for _ in range(2):
                 self.draw_card(next_player)
             skip = True
+        # -2 = Draw, -1=Card
         elif value == "CARD":
-            self.top_card = f"{chosen_suit} -1"#-1 so that the value cannot match
+            self.top_card = f"{chosen_suit} -1"#-1 so that the value cannot match. 
         elif value == "DRAW4":
-            self.top_card = f"{chosen_suit} -1"#-1 so that the value cannot match
+            self.top_card = f"{chosen_suit} -2"#-2 so that the value cannot match
             next_player = (self.current_turn + self.direction) % self.num_players
             for _ in range(4):
                 self.draw_card(next_player)
