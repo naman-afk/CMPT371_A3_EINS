@@ -14,10 +14,31 @@ Team Members
 
 ## 1. Project Overview
    ### 1.1 Description
+   This project is a terminal based multiplayer card game inspired by UNO, built by using Python sockets.
+   The client handles keyboard input, renders UI, and communicates with the server using a simple JSON protocol.
+   The server manages turns, card rules, and game flow.
 
    ### 1.2 Architecture
+   Server:
+      - Accepts player connections
+      - Tracks game state
+      - Validates moves
+      - Broadcasts updates to all clients
+
+   Client: 
+      - Connects to server over TCP
+      - Renders the game UI using Rich
+      - Sends play actions
+      - Handles card/wildcard suit selection
+      - Displays end-of-game messages
+
+   UI Layer:
+      - Built with Rich Layout, Panels, and Text
+      - Footer shows Player's hand and wildcard suit selector
+      - WIn/Lose state displayed
 
    ### 1.4 Limitations & Edge Cases
+      - Each game starts fresh
 
 ## 2. Demo Video
 
@@ -27,5 +48,21 @@ Team Members
    - pip install -r requirements.txt
 
    ### 3.2 Step-by-Step Guide
+   (Make sure correct you are in the correct directory)
+      1. Start the server: python server.py
+         Enter number of players.
+      2. Start the clients: python client.py
+      3. Turns and Top card displayed and will be updated after player play
+      4. On your turn:
+         Follow the on screen instructions:
+          - ↑/↓ to highlight card to play
+          - Enter to play
+          - d/D to draw a card from pile
+          - Q to quit
+      5. Otherwise wait
+      6. When player wins/loses message is shown and game exits.
+      
+
 
 ## 4. Academic Integrity & References
+UI layout and rendering, used ChatGPT. 
