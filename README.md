@@ -14,62 +14,64 @@ Team Members
 
 ## 1. Project Overview
    ### 1.1 Description
-   This project is a terminal based multiplayer card game inspired by UNO constructed by using Python sockets.
-   The client handles keyboard input, renders UI, and communicates with the server using a simple JSON protocol.
-   The server is in charge of turns, card rules, and the game.
+   This project is a terminal based multiplayer card game inspired by UNO constructed by using Python sockets.<br>
+   The client handles keyboard input, renders UI, and communicates with the server using a simple JSON protocol.<br>
+   The server is in charge of turns, card rules, and the game.<br>
 
    ### 1.2 Architecture
-   Server:
-      - Accepts player connections
-      - Tracks game state
-      - Validates moves
-      - Broadcasts updates to all clients
+   Server:<br>
+      - Accepts player connections<br>
+      - Tracks game state<br>
+      - Validates moves<br>
+      - Broadcasts updates to all clients<br>
 
-   Client: 
-      - Connects to server over TCP
-      - Renders the game UI using Rich
-      - Sends play actions
-      - Deals with card/wildcard suit selection
-      - Displays end-of-game messages
+   Client: <br>
+      - Connects to server over TCP<br>
+      - Renders the game UI using Rich<br>
+      - Sends play actions<br>
+      - Deals with card/wildcard suit selection<br>
+      - Displays end-of-game messages<br>
 
-   UI Layer:
-      - Built with Rich Layout, Panels, and Text
-      - Footer shows Player's hand and wildcard suit selector
-      - WIn/Lose state displayed
+   UI Layer:<br>
+      - Built with Rich Layout, Panels, and Text<br>
+      - Footer shows Player's hand and wildcard suit selector<br>
+      - WIn/Lose state displayed<br>
 
-   ### 1.4 Limitations & Edge Cases
-      - Each game starts fresh
-         -Solution: Start playing the game and the game will not be fresh no more
-      - Cannot handle cases where all cards are in hands and none is left within the deck/discard
-         -Solution: Please play the cards and don't just keep drawing cards
-      - Only 2-5 players, cannot handle more or less(no robot to play against you)
-         -Solution: Take turn playing with friends if have more than 5 players
-      - When one client wins/quit, the server keeps running and looks for client to connect to unless you manually close it
-         -Solution: Manually close the server when you are finish playing
+   ### 1.4 Limitation and Edge Cases
+
+    -Each game starts fresh<br>
+         -Solution: Start playing the game and the game will not be fresh no more<br>
+      - Cannot handle cases where all cards are in hands and none is left within the deck/discard<br>
+         -Solution: Please play the cards and don't just keep drawing cards<br>
+      - Only 2-5 players, cannot handle more or less(no robot to play against you)<br>
+         -Solution: Take turn playing with friends if have more than 5 players<br>
+      - When one client wins/quit, the server keeps running and looks for client to connect to unless you manually close it<br>
+         -Solution: Manually close the server when you are finish playing<br>
       
       
 
-## 2. Demo Video
-[Demo Video Here on Youtube](https://www.youtube.com/watch?v=2-cLr3RGzUo)
-## 3. How to run
-   ### 3.1 Prerequisites
-   - Python version 3.10+
-   - pip install -r requirements.txt
+## 2. Demo Video<br>
+[Demo Video Here on Youtube](https://www.youtube.com/watch?v=2-cLr3RGzUo)<br>
+## 3. How to run<br>
+   ### 3.1 Prerequisites<br>
+   - Python version 3.10+<br>
+   - pip install -r requirements.txt<br>
 
-   ### 3.2 Step-by-Step Guide
-   (Make sure correct you are in the correct directory)
-      1. Start the server: python server.py
-         Enter number of players.
-      2. Start the clients: python client.py
-      3. Turns and Top card displayed and will be updated after player play
-      4. On your turn:
-         Follow the on screen instructions:
-          - ↑/↓ to highlight card to play
-          - Enter to play
-          - d/D to draw a card from pile
-          - Q to quit
-      5. Otherwise wait
-      6. When player wins/loses message is shown and game exits.
+   ### 3.2 Step-by-Step Guide<br>
+   (Make sure correct you are in the correct directory)<br>
+      1. Start the server: python server.py<br>
+         Enter number of players.<br>
+      2. Start the clients: python client.py<br>
+         Note: the game will automatically start once all players have joined <br>
+      3. Turns and Top card displayed and will be updated after player play <br>
+      4. On your turn:<br>
+         Follow the on screen instructions:<br>
+          - ↑/↓ to highlight card to play<br>
+          - Enter to play<br>
+          - d/D to draw a card from pile<br>
+          - Q to quit<br>
+      5. Otherwise wait<br>
+      6. When player wins/loses message is shown and game exits.<br>
       
 
 
